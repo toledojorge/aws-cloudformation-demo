@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: Apis generator test
 Resources:
-  apis-generator-test-role-todo: 
+  RoleTest: 
     Type: 'AWS::IAM::Role'
     Properties: 
       AssumeRolePolicyDocument:
@@ -11,12 +11,12 @@ Resources:
             Principal:
               Service: lambda.amazonaws.com
             Action: sts:AssumeRole
-  depositos-bancarios-api-account-credit-http-post-todo:
+  FunctionTest:
     Type: AWS::Lambda::Function
     Properties:
       FunctionName : depositos-bancarios-api-account-credit-http-post-todo
       Runtime: nodejs14.x
-      Role: !GetAtt 'apis-generator-test-role-todo.Arn'
+      Role: !GetAtt 'RoleTest.Arn'
       Handler: index.handler
       Code:
         ZipFile: |
