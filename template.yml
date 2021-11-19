@@ -4,6 +4,7 @@ Resources:
   RoleTest: 
     Type: 'AWS::IAM::Role'
     Properties: 
+      RoleName: apis-generator-role-test
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -27,3 +28,20 @@ Resources:
               };
               return response;
           };
+  MyStateMachine:
+    Type: AWS::StepFunctions::StateMachine
+    Properties:
+      StateMachineName: depositos-bancarios-api-account-credit-http-delete-todo
+      DefinitionString: |-
+        {
+          "Comment": "A description of my state machine",
+          "StartAt": "Wait",
+          "States": {
+            "Wait": {
+              "Type": "Wait",
+              "Seconds": 9,
+              "End": true
+            }
+          }
+        }
+      RoleArn: !GetAtt 'RoleTest.Arn'
