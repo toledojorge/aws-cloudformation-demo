@@ -32,6 +32,7 @@ Resources:
     Type: AWS::StepFunctions::StateMachine
     Properties:
       StateMachineName: depositos-bancarios-api-account-credit-http-delete-todo
+      StateMachineType: EXPRESS
       DefinitionString: |-
         {
           "Comment": "A description of my state machine",
